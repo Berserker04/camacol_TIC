@@ -9,12 +9,12 @@ package View.components;
  *
  * @author Berserker
  */
-public class jpConsulta1 extends javax.swing.JPanel {
+public class jpConsulta3 extends javax.swing.JPanel {
 
     /**
      * Creates new form jpConsulta1
      */
-    public jpConsulta1() {
+    public jpConsulta3() {
         initComponents();
     }
 
