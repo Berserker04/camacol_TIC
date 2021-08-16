@@ -28,9 +28,9 @@ public class jpConsulta2 extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblConsulta1 = new javax.swing.JTable();
+        tblConsulta2 = new javax.swing.JTable();
 
-        tblConsulta1.setModel(new javax.swing.table.DefaultTableModel(
+        tblConsulta2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -46,7 +46,7 @@ public class jpConsulta2 extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblConsulta1);
+        jScrollPane1.setViewportView(tblConsulta2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -63,6 +63,6 @@ public class jpConsulta2 extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblConsulta1;
+    public javax.swing.JTable tblConsulta2;
     // End of variables declaration//GEN-END:variables
 }

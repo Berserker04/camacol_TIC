@@ -62,7 +62,7 @@ public class jpConsulta1 extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblConsulta1;
+    public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTable tblConsulta1;
     // End of variables declaration//GEN-END:variables
 }

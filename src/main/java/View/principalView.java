@@ -9,6 +9,10 @@ import Controller.PrincipalController;
 import Model.vo.Requerimiento_1;
 import Model.vo.Requerimiento_2;
 import Model.vo.Requerimiento_3;
+import View.components.jpConsulta1;
+import View.components.jpConsulta2;
+import View.components.jpConsulta3;
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 
 /**
@@ -18,11 +22,27 @@ import java.util.ArrayList;
 public class PrincipalView extends javax.swing.JFrame {
 
     public static final PrincipalController controlador = new PrincipalController();
+    jpConsulta1 pConsulta1 = new jpConsulta1();
+    jpConsulta2 pConsulta2 = new jpConsulta2();
+    jpConsulta3 pConsulta3 = new jpConsulta3();
+
     /**
      * Creates new form principalView
      */
     public PrincipalView() {
         initComponents();
+
+        pConsulta1.setBounds(0, 225, 1232, 560);
+        pConsulta2.setBounds(0, 225, 1232, 560);
+        pConsulta3.setBounds(0, 225, 1232, 560);
+
+        pConsulta1.setVisible(false);
+        pConsulta2.setVisible(false);
+        pConsulta3.setVisible(false);
+
+        add(pConsulta1);
+        add(pConsulta2);
+        add(pConsulta3);
     }
 
     /**
@@ -43,8 +63,8 @@ public class PrincipalView extends javax.swing.JFrame {
         btnConsulta_3 = new javax.swing.JButton();
         btnConsulta_1 = new javax.swing.JButton();
         btnResetear = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jpBody = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,16 +86,16 @@ public class PrincipalView extends javax.swing.JFrame {
         jPanel1.add(btnConsulta_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Obtener el listado de compras con información");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, -1, -1));
+        jLabel2.setText("Información de compras");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("Obtener Cargo y el máximo de los salarios de los lideres");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 90, -1, -1));
+        jLabel3.setText("Cargo y salario máximo de los lideres");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 90, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel4.setText("Obtener el listado de proyectos con información");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, -1));
+        jLabel4.setText("Información de proyectos");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, -1));
 
         btnConsulta_3.setText("Consultar");
         btnConsulta_3.setFocusPainted(false);
@@ -97,23 +117,19 @@ public class PrincipalView extends javax.swing.JFrame {
 
         btnResetear.setText("Resetear");
         btnResetear.setFocusPainted(false);
+        btnResetear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetearActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnResetear, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 20, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jpBody.setBackground(new java.awt.Color(102, 102, 102));
+        jpBody.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1230, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 560));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Debes consultar para ver la información");
+        jpBody.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,7 +137,7 @@ public class PrincipalView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpBody, javax.swing.GroupLayout.PREFERRED_SIZE, 1232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -129,7 +145,7 @@ public class PrincipalView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jpBody, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -147,11 +163,35 @@ public class PrincipalView extends javax.swing.JFrame {
             // Cada VO cargado, mostrarlo en la vista
             ArrayList<Requerimiento_1> lista = controlador.consultarRequerimiento1();
 
-            lista.forEach(item -> {
-                System.out.println(item.getConstructora() + " " + item.getCiudad() + " " + item.getBanco() + " "
-                        + String.format("%.6f", item.getPorcentaje()).replace(",", ".")  + " " + item.getClasificacion() + " " + item.getFecha());
-            });
+            String model_1[][] = new String[lista.size()][6];
 
+            for (int i = 0; i < lista.size(); i++) {
+//                System.out.println(item.getConstructora() + " " + item.getCiudad() + " " + item.getBanco() + " "
+//                        + String.format("%.6f", item.getPorcentaje()).replace(",", ".")  + " " + item.getClasificacion() + " " + item.getFecha());
+
+                model_1[i][0] = lista.get(i).getConstructora();
+                model_1[i][1] = lista.get(i).getCiudad();
+                model_1[i][2] = lista.get(i).getBanco();
+                model_1[i][3] = String.format("%.6f", lista.get(i).getPorcentaje()).replace(",", ".");
+                model_1[i][4] = lista.get(i).getClasificacion();
+                model_1[i][5] = lista.get(i).getFecha();
+            }
+
+            pConsulta1.tblConsulta1.setModel(new javax.swing.table.DefaultTableModel(
+                    model_1,
+                    new String[]{
+                        "1Constructora", "Ciudad", "Banco vinculado", "Porcentaje de cuota inicial", "Clasificacion", "Fecha de inicio"
+                    }
+            ));
+            jpBody.setVisible(false);
+            pConsulta2.setVisible(false);
+            pConsulta3.setVisible(false);
+            pConsulta1.setVisible(true);
+//            jpBody.removeAll();
+//            
+//             jpBody.revalidate();
+//            jpBody.repaint);(
+//       n.setVisible(true);   
         } catch (Exception e) {
             System.err.println("Ha ocurrido un error!" + e.getMessage());
         }
@@ -168,9 +208,28 @@ public class PrincipalView extends javax.swing.JFrame {
             // Cada VO cargado, mostrarlo en la vista
             ArrayList<Requerimiento_2> lista = controlador.consultarRequerimiento2();
 
-            lista.forEach(item -> {
-                System.out.println(item.getProveedor() + " " + item.getConstructora() + " " + item.getPagado());
-            });
+            String model_1[][] = new String[lista.size()][3];
+
+            for (int i = 0; i < lista.size(); i++) {
+//                System.out.println(item.getConstructora() + " " + item.getCiudad() + " " + item.getBanco() + " "
+//                        + String.format("%.6f", item.getPorcentaje()).replace(",", ".")  + " " + item.getClasificacion() + " " + item.getFecha());
+
+                model_1[i][0] = lista.get(i).getProveedor();
+                model_1[i][1] = lista.get(i).getConstructora();
+                model_1[i][2] = lista.get(i).getPagado();
+            }
+
+            pConsulta2.tblConsulta2.setModel(new javax.swing.table.DefaultTableModel(
+                    model_1,
+                    new String[]{
+                        "Proveedor", "Constructora", "Pagado"
+                    }
+            ));
+            jpBody.setVisible(false);
+            pConsulta2.setVisible(true);
+            pConsulta3.setVisible(false);
+            pConsulta1.setVisible(false);
+
         } catch (Exception e) {
             System.err.println("Ha ocurrido un error!" + e.getMessage());
         }
@@ -187,13 +246,38 @@ public class PrincipalView extends javax.swing.JFrame {
             // Cada VO cargado, mostrarlo en la vista
             ArrayList<Requerimiento_3> lista = controlador.consultarRequerimiento3();
 
-            lista.forEach(item -> {
-                System.out.println(item.getCargo() + " " + item.getMaxSalario());
-            });
+            String model_1[][] = new String[lista.size()][3];
+
+            for (int i = 0; i < lista.size(); i++) {
+//                System.out.println(item.getConstructora() + " " + item.getCiudad() + " " + item.getBanco() + " "
+//                        + String.format("%.6f", item.getPorcentaje()).replace(",", ".")  + " " + item.getClasificacion() + " " + item.getFecha());
+
+                model_1[i][0] = lista.get(i).getCargo();
+                model_1[i][1] = String.valueOf(lista.get(i).getMaxSalario());
+            }
+
+            pConsulta3.tblConsulta3.setModel(new javax.swing.table.DefaultTableModel(
+                    model_1,
+                    new String[]{
+                        "Cargo", "Salario maximo"
+                    }
+            ));
+            jpBody.setVisible(false);
+            pConsulta2.setVisible(false);
+            pConsulta3.setVisible(true);
+            pConsulta1.setVisible(false);
+
         } catch (Exception e) {
             System.err.println("Ha ocurrido un error! " + e.getMessage());
         }
     }//GEN-LAST:event_btnConsulta_3ActionPerformed
+
+    private void btnResetearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetearActionPerformed
+        jpBody.setVisible(true);
+        pConsulta1.setVisible(false);
+        pConsulta2.setVisible(false);
+        pConsulta2.setVisible(false);
+    }//GEN-LAST:event_btnResetearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,8 +324,8 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jpBody;
     // End of variables declaration//GEN-END:variables
 }
