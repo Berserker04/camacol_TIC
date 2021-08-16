@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Model.vo.Requerimiento_2;
+import util.JDBCUtilities;
 
 public class Requerimiento_2Dao {
     public ArrayList<Requerimiento_2> requerimiento2() throws SQLException {

@@ -5,16 +5,23 @@
  */
 package View;
 
+import Controller.PrincipalController;
+import Model.vo.Requerimiento_1;
+import Model.vo.Requerimiento_2;
+import Model.vo.Requerimiento_3;
+import java.util.ArrayList;
+
 /**
  *
  * @author Berserker
  */
-public class principalView extends javax.swing.JFrame {
+public class PrincipalView extends javax.swing.JFrame {
 
+    public static final PrincipalController controlador = new PrincipalController();
     /**
      * Creates new form principalView
      */
-    public principalView() {
+    public PrincipalView() {
         initComponents();
     }
 
@@ -51,6 +58,11 @@ public class principalView extends javax.swing.JFrame {
 
         btnConsulta_2.setText("Consultar");
         btnConsulta_2.setFocusPainted(false);
+        btnConsulta_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsulta_2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnConsulta_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -67,6 +79,11 @@ public class principalView extends javax.swing.JFrame {
 
         btnConsulta_3.setText("Consultar");
         btnConsulta_3.setFocusPainted(false);
+        btnConsulta_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsulta_3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnConsulta_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 130, -1, -1));
 
         btnConsulta_1.setText("Consultar");
@@ -119,8 +136,64 @@ public class principalView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConsulta_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsulta_1ActionPerformed
-        // TODO add your handling code here:
+        System.out.println("----------Listado de Proyectos de la ciudad de Pereira----------");
+        try {
+            // Su código
+
+            // Encabezado del resultado
+            System.out
+                    .println("Constructora Ciudad Banco_Vinculado Porcentaje_Cuota_Inicial Clasificacion Fecha_Inicio");
+
+            // Cada VO cargado, mostrarlo en la vista
+            ArrayList<Requerimiento_1> lista = controlador.consultarRequerimiento1();
+
+            lista.forEach(item -> {
+                System.out.println(item.getConstructora() + " " + item.getCiudad() + " " + item.getBanco() + " "
+                        + String.format("%.6f", item.getPorcentaje()).replace(",", ".")  + " " + item.getClasificacion() + " " + item.getFecha());
+            });
+
+        } catch (Exception e) {
+            System.err.println("Ha ocurrido un error!" + e.getMessage());
+        }
     }//GEN-LAST:event_btnConsulta_1ActionPerformed
+
+    private void btnConsulta_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsulta_2ActionPerformed
+        try {
+            // Su código
+
+            System.out.println("----------Listado de compras----------");
+            // Encabezado del resultado
+            System.out.println("Proveedor Constructora Pagado");
+
+            // Cada VO cargado, mostrarlo en la vista
+            ArrayList<Requerimiento_2> lista = controlador.consultarRequerimiento2();
+
+            lista.forEach(item -> {
+                System.out.println(item.getProveedor() + " " + item.getConstructora() + " " + item.getPagado());
+            });
+        } catch (Exception e) {
+            System.err.println("Ha ocurrido un error!" + e.getMessage());
+        }
+    }//GEN-LAST:event_btnConsulta_2ActionPerformed
+
+    private void btnConsulta_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsulta_3ActionPerformed
+        try {
+            // Su código
+
+            System.out.println("----------Cargo y el máximo de los salarios----------");
+            // Encabezado del resultado
+            System.out.println("Cargo MAX(l.Salario)");
+
+            // Cada VO cargado, mostrarlo en la vista
+            ArrayList<Requerimiento_3> lista = controlador.consultarRequerimiento3();
+
+            lista.forEach(item -> {
+                System.out.println(item.getCargo() + " " + item.getMaxSalario());
+            });
+        } catch (Exception e) {
+            System.err.println("Ha ocurrido un error! " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnConsulta_3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,20 +212,21 @@ public class principalView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(principalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(principalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(principalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(principalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PrincipalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new principalView().setVisible(true);
+                new PrincipalView().setVisible(true);
             }
         });
     }
